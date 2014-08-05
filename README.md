@@ -3,6 +3,7 @@
 **Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
 
 - [tutorial-PythonCondor](#tutorial-pythoncondor)
+  - [All Files in the Tutorial](#all-files-in-the-tutorial)
 - [Running Python on Condor](#running-python-on-condor)
   - [Introduction](#introduction)
     - [Brief Outline](#brief-outline)
@@ -19,7 +20,6 @@
     - [The python code](#the-python-code)
   - [Flocking the job](#flocking-the-job)
   - [Plotting the results](#plotting-the-results)
-- [All Files in the Tutorial](#all-files-in-the-tutorial)
 - [FAQs](#faqs)
   - [Errors with nested vectors for root_numpy?](#errors-with-nested-vectors-for-root_numpy)
   - [Condor job stderror output?](#condor-job-stderror-output)
