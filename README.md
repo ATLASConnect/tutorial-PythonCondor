@@ -31,6 +31,11 @@ tutorial-PythonCondor
 
 A tutorial focused on running a python job on Condor using NumPy, SciPy, Matplotlib, and a custom user package.
 
+## All Files in the Tutorial
+
+All of the files used in the tutorial can be found [here](http://faxbox.usatlas.org/user/kratsg/CondorPythonTest/). This github contains most of the files, but the larger files are in the faxbox.
+
+
 # Running Python on Condor
 
 ## Introduction
@@ -517,10 +522,6 @@ pl.close()
 And simply run `python merge.py` when you're done to generate a png plot from the data. The code merges the output and then makes your plot. You can then simply copy it over to faxbox and view it online `cp hist_jet_AntiKt10LCTopo_E.png $HOME/faxbox/.` at http://faxbox.usatlas.org/user/kratsg/ and you're done (obviously replacing `kratsg` with your username). Here's a plot of the image that results:
 
 ![jet energies](hist_jet_AntiKt10LCTopo_E.png)
-
-# All Files in the Tutorial
-
-All of the files used in the tutorial can be found [here](http://faxbox.usatlas.org/user/kratsg/CondorPythonTest/). This github contains most of the files, but the larger files are in the faxbox.
 
 # FAQs
 
