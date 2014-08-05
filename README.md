@@ -132,47 +132,46 @@ If you're seeing this (and not an `ImportError` that means it was able to execut
 ### Install `pip` locally
 This is a quick two-liner.
 
- 1. Install `pip`: `easy_install --prefix=$HOME/.local/ pip`
- 1. Update `pip`'s headers to point to the right python: 
-```bash
- perl -pi -e 's/\#\!.*/\#\!\/usr\/bin\/env python/g if $. == 1' `which pip`
-```
+1. Install `pip`: `easy_install --prefix=$HOME/.local/ pip`
+1. Update `pip`'s headers to point to the right python: 
+    ```bash
+    perl -pi -e 's/\#\!.*/\#\!\/usr\/bin\/env python/g if $. == 1' `which pip`
+    ```
 
 You can verify that this works by running `pip` and seeing the usage menu display.
 
 ## Installing Python packages to transfer to Condor (for a job)
-At this point, you've set up your environment so that `easy_install` is local for py`thon-2.7`. Now, we can install our packages elsewhere locally, as long as Python knows where to find them. You can choose to use `easy_install` or `pip` at this point. I'll demonstrate code that uses either one to install python packages to a local directory that you create specifically for a condor job.
+At this point, you've set up your environment so that `easy_install` is local for `python-2.7`. Now, we can install our packages elsewhere locally, as long as Python knows where to find them. You can choose to use `easy_install` or `pip` at this point. I'll demonstrate code that uses either one to install python packages to a local directory that you create specifically for a condor job.
 
 Let's call the folder `CondorPythonLocal` for which we place all relevant python packages.
 
- 1. Build the base directory structure for installing packages. 
-```bash
-mkdir -p $HOME/CondorPythonLocal/lib/python2.7/site-packages
-```
-The `-p` flag will recursively make parent directories as needed (http://explainshell.com/explain?cmd=mkdir+-p).
- 1. Update `$PYTHONPATH` so python can find your files via 
- ```bash
- export PYTHONPATH=$HOME/CondorPythonLocal/lib/python2.7/site-packages:$PYTHONPATH
- ```
- This is only for the current shell.
+1. Build the base directory structure for installing packages. 
+    ```bash
+    mkdir -p $HOME/CondorPythonLocal/lib/python2.7/site-packages
+    ```
+    The `-p` flag will recursively make parent directories as needed (http://explainshell.com/explain?cmd=mkdir+-p).
+
+1. Update `$PYTHONPATH` so python can find your files via 
+    ```bash
+    export PYTHONPATH=$HOME/CondorPythonLocal/lib/python2.7/site-packages:$PYTHONPATH
+    ```
+    This is only for the current shell.
  
- 1. Export some variables, [see scipy docs](http://docs.scipy.org/doc/numpy/user/install.html#disabling-atlas-and-other-accelerated-libraries) (this is numpy specific!) so that you're not compiling using external libraries that may not be on the Condor nodes you are flocking to. 
- ```bash
- export BLAS=None LAPACK=None ATLAS=None
- ```
+1. Export some variables, [see scipy docs](http://docs.scipy.org/doc/numpy/user/install.html#disabling-atlas-and-other-accelerated-libraries) (this is numpy specific!) so that you're not compiling using external libraries that may not be on the Condor nodes you are flocking to. 
+    ```bash
+    export BLAS=None LAPACK=None ATLAS=None
+    ```
  
- 1. Install the packages (`numpy`, then `root_numpy`) using
- 
+1. Install the packages (`numpy`, then `root_numpy`) using
+
     1. `easy_install`
-    
-       * `easy_install --prefix=$HOME/CondorPythonLocal numpy`
-       * `easy_install --prefix=$HOME/CondorPythonLocal root_numpy`
-       
+        * `easy_install --prefix=$HOME/CondorPythonLocal numpy`
+        * `easy_install --prefix=$HOME/CondorPythonLocal root_numpy`
     1. `pip`
-       * `pip install --install-option="--prefix=~/CondorPythonLocal" --ignore-installed numpy`
-       * `pip install --install-option="--prefix=~/CondorPythonLocal" --ignore-installed root_numpy`
-       
-      Note that you need to specify an absolute path for `--install-option` here. See the [pip](http://pip.readthedocs.org/en/latest/reference/pip_install.html?highlight=install%20option#cmdoption--install-option) docs for more information. In my case: `$HOME = /home/kratsg`.
+        * `pip install --install-option="--prefix=~/CondorPythonLocal" --ignore-installed numpy`
+        * `pip install --install-option="--prefix=~/CondorPythonLocal" --ignore-installed root_numpy`
+     
+    Note that you need to specify an absolute path for `--install-option` here. See the [pip](http://pip.readthedocs.org/en/latest/reference/pip_install.html?highlight=install%20option#cmdoption--install-option) docs for more information. In my case: `$HOME = /home/kratsg`.
 
 We can use the PEP350 recommendations to specify the `prefix` on where to install python packages by `prefix=$HOME/folder/for/python/packages`. Unlike `pip`, `easy_install` has no `--ignore-installed` flag which allows you to ignore any python packages that may already be installed locally or globally (locally inside `$HOME/.local` for example). This is a particular reason why I would recommend `pip`.
 
@@ -305,40 +304,40 @@ python main.py -p ${1} -f ${2} -s ${3} -n ${4}
 
 Screw code highlighting. Let's just explain some of what's going on here.
 
- * We export some variables `HOME` and `PROOFANADIR` which is just for organization and consistency.
-```bash
-#NEEDED
-export HOME=$(pwd)
-export PROOFANADIR=$(pwd)
-```
+* We export some variables `HOME` and `PROOFANADIR` which is just for organization and consistency.
+    ```bash
+    #NEEDED
+    export HOME=$(pwd)
+    export PROOFANADIR=$(pwd)
+    ```
 
- * We export **ALRB** (ATLAS Local ROOT Base) and locally set up the version of ROOT we want (see [introduction](#introduction)).
-```bash
-#ROOT STUFF
-export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
-source $ATLAS_LOCAL_ROOT_BASE/user/atlasLocalSetup.sh
-localSetupROOT 5.34.18-x86_64-slc6-gcc4.7 --skipConfirm
-```
+* We export **ALRB** (ATLAS Local ROOT Base) and locally set up the version of ROOT we want (see [introduction](#introduction)).
+    ```bash
+    #ROOT STUFF
+    export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
+    source $ATLAS_LOCAL_ROOT_BASE/user/atlasLocalSetup.sh
+    localSetupROOT 5.34.18-x86_64-slc6-gcc4.7 --skipConfirm
+    ```
 
- * We add the python package folder we transferred over using the `config` file into our python path. **You must always do this after you set up ROOT so that it searches your local package first!**
-```bash
-export PYTHONPATH=$HOME/CondorPythonLocal/lib/python2.7/site-packages:$PYTHONPATH
-```
+* We add the python package folder we transferred over using the `config` file into our python path. **You must always do this after you set up ROOT so that it searches your local package first!**
+    ```bash
+    export PYTHONPATH=$HOME/CondorPythonLocal/lib/python2.7/site-packages:$PYTHONPATH
+    ```
 
- * We just print some information about when the job starts, runs, the directory, to make it easier for tracking issues later... and then we pass along the arguments into the python file. 
-```bash
-printf "Start time: "; /bin/date
-printf "Job is running on node: "; /bin/hostname
-printf "Job running as user: "; /usr/bin/id
-printf "Job is running in directory: "; /bin/pwd
-#
-python main.py -p ${1} -f ${2} -s ${3} -n ${4}
-```
+* We just print some information about when the job starts, runs, the directory, to make it easier for tracking issues later... and then we pass along the arguments into the python file. 
+    ```bash
+    printf "Start time: "; /bin/date
+    printf "Job is running on node: "; /bin/hostname
+    printf "Job running as user: "; /usr/bin/id
+    printf "Job is running in directory: "; /bin/pwd
+    #
+    python main.py -p ${1} -f ${2} -s ${3} -n ${4}
+    ```
 
-   * `${1}` is the process
-   * `${2}` is the filename
-   * `${3}` is the start event
-   * `${4}` is the number of events to read
+    * `${1}` is the process
+    * `${2}` is the filename
+    * `${3}` is the start event
+    * `${4}` is the number of events to read
 
 
 See `config` above for more information about how the arguments were passed.
@@ -488,7 +487,7 @@ pl.close()
 
 And simply run `python merge.py` when you're done to generate a png plot from the data. The code merges the output and then makes your plot. You can then simply copy it over to faxbox and view it online `cp hist_jet_AntiKt10LCTopo_E.png $HOME/faxbox/.` at http://faxbox.usatlas.org/user/kratsg/ and you're done (obviously replacing `kratsg` with your username). Here's a plot of the image that results:
 
-![jet energies](http://faxbox.usatlas.org/user/kratsg/CondorPythonTest/hist_jet_AntiKt10LCTopo_E.png)
+![](http://faxbox.usatlas.org/user/kratsg/CondorPythonTest/hist_jet_AntiKt10LCTopo_E.png)
 
 # All Files in the Tutorial
 
