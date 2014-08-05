@@ -1,3 +1,31 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
+
+- [tutorial-PythonCondor](#tutorial-pythoncondor)
+- [Running Python on Condor](#running-python-on-condor)
+  - [Introduction](#introduction)
+    - [Brief Outline](#brief-outline)
+  - [Setting up the Environment](#setting-up-the-environment)
+  - [Setting up `easy_install` and `pip`](#setting-up-easy_install-and-pip)
+    - [Update environment paths](#update-environment-paths)
+    - [Update `easy_install` to point to correct python binary](#update-easy_install-to-point-to-correct-python-binary)
+    - [Install `pip` locally](#install-pip-locally)
+  - [Installing Python packages to transfer to Condor (for a job)](#installing-python-packages-to-transfer-to-condor-for-a-job)
+- [Actually running a Condor job (use case)](#actually-running-a-condor-job-use-case)
+  - [The Files](#the-files)
+    - [The Condor `config` file](#the-condor-config-file)
+    - [The main script file](#the-main-script-file)
+    - [The python code](#the-python-code)
+  - [Flocking the job](#flocking-the-job)
+  - [Plotting the results](#plotting-the-results)
+- [All Files in the Tutorial](#all-files-in-the-tutorial)
+- [FAQs](#faqs)
+  - [Errors with nested vectors for root_numpy?](#errors-with-nested-vectors-for-root_numpy)
+  - [Condor job stderror output?](#condor-job-stderror-output)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 tutorial-PythonCondor
 =====================
 
