@@ -134,11 +134,12 @@ This is a quick two-liner.
 
 1. Install `pip`: `easy_install --prefix=$HOME/.local/ pip`
 1. Update `pip`'s headers to point to the right python: 
+
     ```bash
     perl -pi -e 's/\#\!.*/\#\!\/usr\/bin\/env python/g if $. == 1' `which pip`
     ```
 
-You can verify that this works by running `pip` and seeing the usage menu display.
+    You can verify that this works by running `pip` and seeing the usage menu display.
 
 ## Installing Python packages to transfer to Condor (for a job)
 At this point, you've set up your environment so that `easy_install` is local for `python-2.7`. Now, we can install our packages elsewhere locally, as long as Python knows where to find them. You can choose to use `easy_install` or `pip` at this point. I'll demonstrate code that uses either one to install python packages to a local directory that you create specifically for a condor job.
@@ -487,7 +488,7 @@ pl.close()
 
 And simply run `python merge.py` when you're done to generate a png plot from the data. The code merges the output and then makes your plot. You can then simply copy it over to faxbox and view it online `cp hist_jet_AntiKt10LCTopo_E.png $HOME/faxbox/.` at http://faxbox.usatlas.org/user/kratsg/ and you're done (obviously replacing `kratsg` with your username). Here's a plot of the image that results:
 
-![](http://faxbox.usatlas.org/user/kratsg/CondorPythonTest/hist_jet_AntiKt10LCTopo_E.png)
+![](http://faxbox.usatlas.org/user/kratsg/CondorPythonTest/hist\_jet\_AntiKt10LCTopo\_E.png)
 
 # All Files in the Tutorial
 
