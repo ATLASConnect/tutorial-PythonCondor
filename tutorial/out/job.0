@@ -1,0 +1,68 @@
+
+################################################################################
+#####                                                                      #####
+#####        Job is running within a Remote Cluster Connect Factory        #####
+#####                                                                      #####
+##### Date: Wed Apr 16 18:40:00 CDT 2014                                   #####
+##### RCCF: mwt2                                                           #####
+##### User: ruc.mwt2                                                       #####
+##### Host: uct2-c305.mwt2.org                                             #####
+#####                                                                      #####
+################################################################################
+
+...Type localSetupAGIS to setup AGIS
+...Type localSetupDQ2Client to use DQ2 Client
+...Type localSetupEmi to use emi
+...Type localSetupFAX to use FAX
+...Type localSetupGanga to use Ganga
+...Type localSetupGcc to use alternate gcc
+...Type localSetupPacman to use Pacman
+...Type localSetupPandaClient to use Panda Client
+...Type localSetupPyAMI to setup pyAMI
+...Type localSetupPoD to setup Proof-on-Demand
+...Type localSetupROOT to setup (standalone) ROOT
+...Type localSetupDQ2Wrappers to setup DQ2Wrappers
+...Type localSetupSFT to setup SFT packages
+...Type localSetupXRootD to setup XRootD
+...Type showVersions to show versions of installed software
+...Type asetup to setup a release (changeASetup to change asetup version)
+...Type rcSetup to setup an ASG release (changeRCSetup to change rcSetup ver.)
+...Type diagnostics for diagnostic tools
+...Type helpMe for more help
+...Type printMenu to show this menu
+
+[1m[4m09 Apr 2014[0m
+  New version of grid middleware is available for testing (SL6 only).
+  To use, log in again and type setupATLAS --test=useEmi3  
+   Known issues: https://twiki.atlas-canada.ca/bin/view/AtlasCanada/EmiTesting
+  This version depends on Java so please test it.
+
+[1;34mCreated /scratch/rcc_mwt2/rcc.k8y78d0nhq/execute.192.170.226.126-11402/dir_11831/.asetup.  Please look and (optional) edit it.[0m
+************************************************************************
+Setting up ROOT version 5.34.18-x86_64-slc6-gcc4.7
+  Current GCC version: gcc (GCC) 4.4.7 20120313 (Red Hat 4.4.7-3)
+Setting up gcc version gcc472_x86_64_slc6
+  Python version in your path is 2.6.6
+  Python version used to build ROOT is 2.7
+Setting up Python version 2.7.3-x86_64-slc6-gcc47
+  If you need a different gcc/python version:
+    localSetupGcc --gccVersion=<value>
+    localSetupPython --pythonVersion=<version>
+  where the version must exist (showVersions --show=gcc,python)
+Setting up XRootD version 3.2.7-x86_64-slc6
+************************************************************************
+ Tip for _this_ standalone ROOT and grid (ie prun) submission:
+  avoid --athenaTag if you do not need athena
+  use --rootVer=5.34/18 --cmtConfig=x86_64-slc6-gcc47-opt
+************************************************************************
+Start time: Wed Apr 16 18:40:03 CDT 2014
+Job is running on node: uct2-c305.mwt2.org
+Job running as user: uid=24014(ruc.mwt2) gid=24000(ruc) groups=24000(ruc)
+Job is running in directory: /scratch/rcc_mwt2/rcc.k8y78d0nhq/execute.192.170.226.126-11402/dir_11831
+Finished job 0 in:
+	 Wall time: 91.87 s 
+	 Clock Time: 90.81 s
+
+################################################################################
+################################ Job Complete ##################################
+################################################################################

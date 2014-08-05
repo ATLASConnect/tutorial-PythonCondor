@@ -1,0 +1,21 @@
+
+# See https://twiki.cern.ch/twiki/bin/view/Atlas/AtlasSetup for details
+# To recreate this file, simply delete it and do setupATLAS
+
+# This is an example to automatically create a $TestArea for each release 
+#  with the release and project name
+#  eg. asetup 16.6.7 would result in 
+#        $TestArea = $HOME/athena/AtlasOffline-16.6.7 
+
+[defaults]
+
+# your test area directory
+#testarea = /scratch/rcc_mwt2/rcc.z8zfssfXmV/execute.149.165.225.165-6515/dir_12434/athena
+
+# each release has its own directory
+#multi = True
+
+# the release dir name has the project prepended
+#projtest = True
+
+

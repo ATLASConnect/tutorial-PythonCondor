@@ -1,0 +1,60 @@
+# The UNIVERSE defines an execution environment. You will almost always use VANILLA. 
+Universe = vanilla 
+
+# EXECUTABLE is the program your job will run It's often useful 
+# to create a shell script to "wrap" your actual work. 
+Executable = main.sh
+
+# requirements
+Requirements = OpSysAndVer =?= "SL6" 
+
+# ERROR and OUTPUT are the error and output channels from your job
+# that HTCondor returns from the remote host.
+Error = error/job.$(Process)
+Output = out/job.$(Process)
+
+# The LOG file is where HTCondor places information about your 
+# job's status, success, and resource consumption. 
+Log = log/job.$(Process)
+
+# +ProjectName is the name of the project reported to the OSG accounting system
++ProjectName="atlas-org-uchicago"
+
+should_transfer_files = YES
+when_to_transfer_output = ON_Exit
+transfer_output         = True
+transfer_input_files    = /home/kratsg/CondorPythonLocal, main.py
+#transfer_output_files   = hist_jet_AntiKt10LCTopo_E_$(Process).pkl
+
+# QUEUE is the "start button" - it launches any jobs that have been 
+# specified thus far. 
+
+Arguments = $(Process) root://faxbox.usatlas.org//user/kratsg/CondorPythonTest/PileupSkim_TTbar_14TeV_MU80.root 0 1000
+Queue 1
+
+Arguments = $(Process) root://faxbox.usatlas.org//user/kratsg/CondorPythonTest/PileupSkim_TTbar_14TeV_MU80.root 1000 1000
+Queue 1
+
+Arguments = $(Process) root://faxbox.usatlas.org//user/kratsg/CondorPythonTest/PileupSkim_TTbar_14TeV_MU80.root 2000 1000
+Queue 1
+
+Arguments = $(Process) root://faxbox.usatlas.org//user/kratsg/CondorPythonTest/PileupSkim_TTbar_14TeV_MU80.root 3000 1000
+Queue 1
+
+Arguments = $(Process) root://faxbox.usatlas.org//user/kratsg/CondorPythonTest/PileupSkim_TTbar_14TeV_MU80.root 4000 1000
+Queue 1
+
+Arguments = $(Process) root://faxbox.usatlas.org//user/kratsg/CondorPythonTest/PileupSkim_TTbar_14TeV_MU80.root 5000 1000
+Queue 1
+
+Arguments = $(Process) root://faxbox.usatlas.org//user/kratsg/CondorPythonTest/PileupSkim_TTbar_14TeV_MU80.root 6000 1000
+Queue 1
+
+Arguments = $(Process) root://faxbox.usatlas.org//user/kratsg/CondorPythonTest/PileupSkim_TTbar_14TeV_MU80.root 7000 1000
+Queue 1
+
+Arguments = $(Process) root://faxbox.usatlas.org//user/kratsg/CondorPythonTest/PileupSkim_TTbar_14TeV_MU80.root 8000 1000
+Queue 1
+
+Arguments = $(Process) root://faxbox.usatlas.org//user/kratsg/CondorPythonTest/PileupSkim_TTbar_14TeV_MU80.root 9000 1000
+Queue 1
