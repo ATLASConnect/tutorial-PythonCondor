@@ -488,7 +488,7 @@ pl.close()
 
 And simply run `python merge.py` when you're done to generate a png plot from the data. The code merges the output and then makes your plot. You can then simply copy it over to faxbox and view it online `cp hist_jet_AntiKt10LCTopo_E.png $HOME/faxbox/.` at http://faxbox.usatlas.org/user/kratsg/ and you're done (obviously replacing `kratsg` with your username). Here's a plot of the image that results:
 
-![](http://faxbox.usatlas.org/user/kratsg/CondorPythonTest/hist\_jet\_AntiKt10LCTopo\_E.png)
+![jet energies](hist_jet_AntiKt10LCTopo_E.png)
 
 # All Files in the Tutorial
 
